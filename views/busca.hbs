@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Top retweets</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+/* narrower container */
+@media (min-width: 768px) {
+
+  .produto {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.3em;
+    font-weight: 300;
+    padding: 6px;
+    height: 360px;
+  }
+  .produto > div {
+  	position: relative;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    padding:10px;
+    height: 100%;
+  }
+
+  .produto h3 {
+  	font-size: 1.1em;
+  	margin: 2px;
+  }
+  .produto .abaixo {
+  	position: absolute;
+  	bottom: 0;
+  	right: 0;
+  	width: 100%;
+  	padding: 10px;
+  }
+  .produto .preco {
+  	font-family:Garamond, Georgia, serif;
+	font-weight: 700;
+	font-size: 2.1em;
+	color: #CE2E00;
+  }
+  .produto .abaixo a {
+  	line-height: 2.0em;
+	font-size: 1.3em;
+  }
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .faixa-preco {
+    text-align: right;
+  }
+}
+
+</style>
+</head>
+<body>
+	
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="https://github.com/mtrovo/t-championsleague">Fork on github</a></li>
+        </ul>
+        <h3 class="text-muted">APD3 - Busca</h3>
+      </div>
+
+      <div class="row">
+        <form action="/busca">
+          <div class="col-md-6">Busca: <input type="text" name="b" id="" value="{{filtro.nome}}"></div>
+          <div class="col-md-6 faixa-preco">min: <input type="text" name="minpx" id="" size='5' value="{{filtro.minpx}}"> max: <input type="text" name="maxpx" id="" size='5' value="{{filtro.maxpx}}"> <input class='btn btn-primary' type="submit" value="Buscar"></div>
+        </form>
+      </div>
+      <div class="row">
+      {{#each produtos}}
+	<div class="produto col-md-4">
+		<div>
+					
+		<center>
+			<img src="{{img_url}}" alt="{{nome}}" title="{{nome}}" height='200'>
+		</center>
+			<h3>{{nome}}</h3>
+		<div class='abaixo'>
+		  <span class="preco">{{preco}}</span>
+		  <span class="pull-right">
+		  	<a class="btn btn-danger" target="_blank" href="{{produto_url}}">Ir para loja</a>
+		  </span>
+		</div>
+		<br clear="both">
+		</div>
+	</div>
+      {{/each}}
+      </div>
+    <div class="row">
+      <div class="footer">
+        <p>&copy; mtrovo 2014</p>
+      </div>
+    </div>
+</body>
+</html>
