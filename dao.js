@@ -6,7 +6,7 @@ var ProdutoDao = new Object();
 ProdutoDao.buscaProdutoComFiltro = function(filtro, callback){
 	var query = "SELECT * FROM produto " + 
 				"WHERE LOWER(nome) like ? AND preco <= ? AND preco >= ? " +
-				"";
+				"ORDER BY preco";
 
 	var stmt = db.prepare(query);
 	var search = '%'+filtro.nome.toLowerCase()+'%';
